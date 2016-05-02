@@ -1,0 +1,76 @@
+{{<master}}
+
+{{$pageLinks}}
+{{/pageLinks}}
+
+{{$mainContent}}
+<div class="row">
+    <div class="col-md-6 col-md-offset-2">
+        <div class="login-panel panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Please Sign In</h3>
+            </div>
+            <div class="panel-body">
+                <form role="form">
+                    <fieldset>
+                        <div class="form-group">
+                            <input id="userName" class="form-control" placeholder="E-mail" name="email" type="email"
+                                   autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input id="password" class="form-control" placeholder="Password" name="password"
+                                   type="password" value="">
+                        </div>
+                        <div id="login-error-div" class="form-group">
+                            <p id="login-error-p" class="text-danger">测试测试</p>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                            </label>
+                        </div>
+                        <!-- Change this to a button or input when using this as a form -->
+                        <a id="login" class="btn btn-lg btn-success btn-block">Login</a>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{/mainContent}}
+
+
+{{$pageScripts}}
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#login-error-div").hide();
+
+        $("#login").click(function () {
+            $("#login-error-div").hide();
+            var username = $("#userName").val();
+            var password = $("#password").val();
+            console.info("User Name is " + username);
+            console.info("Password is " + password);
+
+            $.post(
+                    "/login",
+                    {
+                        userName: username,
+                        password: password
+                    },
+                    function (data, status) {
+                        console.log("Login success");
+                        window.location.href = "/order";
+                    }
+            ).error(function () {
+                console.log("Login failed");
+                $("#login-error-div").show();
+                $("#login-error-p").html("登录失败，错误的用户名或者密码!");
+            });
+        });
+    });
+</script>
+{{/pageScripts}}
+
+{{/master}}

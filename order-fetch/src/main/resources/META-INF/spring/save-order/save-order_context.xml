@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <import resource="classpath:META-INF/spring/init.xml"/>
+    <import resource="classpath:common-context.xml"/>
+
+    <bean id="orderProcessor" class="org.ai.order.fetch.processor.OrderProcessor"/>
+
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+        <route>
+            <description>
+                Get order from html file and save to database
+            </description>
+            <!--<from uri="file:{{blackeye.output}}"/>-->
+            <from uri="file:C:/blackeye/test/?charset=gb2312"/>
+            <to uri="bean:orderProcessor?method=unmarshall"/>
+            <to uri="bean:orderProcessor?method=saveOrders"/>
+        </route>
+    </camelContext>
+
+</beans>

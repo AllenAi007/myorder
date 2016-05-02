@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="username" value="${connection.username}"/>
+        <property name="password" value="${connection.password}"/>
+        <property name="url" value="${connection.url}"/>
+        <property name="driverClassName" value="${connection.driverClassName}"/>
+        <property name="maxIdle" value="${connection.maxIdle}"/>
+        <property name="minIdle" value="${connection.minIdle}"/>
+        <property name="removeAbandonedTimeout" value="${connection.removeAbandonedTimeout}"/>
+    </bean>
+
+</beans>

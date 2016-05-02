@@ -1,0 +1,27 @@
+{{<master}}
+
+{{$pageLinks}}
+{{/pageLinks}}
+
+{{$mainContent}}
+<div class="row">
+    <div class="col-md-6 col-md-offset-2">
+        <div class="login-panel panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">请求错误，请联系管理员！</h3>
+            </div>
+            <div class="panel-body">
+                <p class="text-danger">错误编码： {{status}}</p>
+                <p class="text-danger">错误描述： {{message}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/mainContent}}
+
+
+{{$pageScripts}}
+{{/pageScripts}}
+
+{{/master}}

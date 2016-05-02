@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<permission>
+    <resources>
+        <resource>
+            <name>HomePage</name>
+            <path>/</path>
+        </resource>
+        <resource>
+            <name>Admin Page</name>
+            <path>/admin</path>
+        </resource>
+    </resources>
+</permission>
